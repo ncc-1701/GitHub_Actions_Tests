@@ -6,7 +6,7 @@ on: [push]
 jobs:
     # Print the current stage
     notif-start:
-        run-on: ubuntu-22.04
+        runs-on: python:3.13.4-bookworm
         steps:
           - run: echo "Start tests."
 
