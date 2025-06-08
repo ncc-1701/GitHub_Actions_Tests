@@ -1,0 +1,13 @@
+# Test workflow must be triggered by push event
+name: Test Workflow
+on: [push]
+
+# Jobs of the test's workflow
+jobs:
+    # Print the current stage
+    notif-start:
+        run-on: python:3.13.4-bookworm
+        steps:
+          - run: echo "Start tests."
+
+          
