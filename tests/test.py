@@ -1,5 +1,5 @@
 # Import some additional packages
-import sys, os, subprocess
+import os, subprocess
 
 # Settings
 # Directories
@@ -12,10 +12,9 @@ COMPILE_TIMEOUT = 10.0
 RUN_TIMEOUT = 10.0
 
 # Create the absolute paths
-cwd_path = os.getcwd()
-src_path = os.path.join(cwd_path, SRC_DIR, SRC_FILE)
-bin_path = os.path.join(cwd_path, BUILD_DIR, "bin")
-build_dir = os.path.join(cwd_path, BUILD_DIR)
+src_path = os.path.join(os.getcwd(), SRC_DIR, SRC_FILE)
+bin_path = os.path.join(os.getcwd(), BUILD_DIR, "bin")
+build_dir = os.path.join(os.getcwd(), BUILD_DIR)
 print("src_path:", src_path)
 print("bin_path:", bin_path)
 print("build_dir:", build_dir)
