@@ -1,24 +1,29 @@
 # Import some additional packages
-import os, subprocess
+import sys, os, subprocess
 
 # Settings
 # Directories
-SRC_DIR = "../src"
+SRC_DIR = "src"
 SRC_FILE = "main.c"
-BUILD_DIR = "../Build"
+BUILD_DIR = "Build"
 
 # Timeouts
 COMPILE_TIMEOUT = 10.0
 RUN_TIMEOUT = 10.0
 
 # Create the absolute paths
-src_path = os.path.join(SRC_DIR, SRC_FILE)
-bin_path = os.path.join(BUILD_DIR, "bin")
+cwd_path = os.getcwd()
+src_path = os.path.join(cwd_path, SRC_DIR, SRC_FILE)
+bin_path = os.path.join(cwd_path, BUILD_DIR, "bin")
+build_dir = os.path.join(cwd_path, BUILD_DIR)
+print("src_path:", src_path)
+print("bin_path:", bin_path)
+print("build_dir:", build_dir)
 
 # Compile the project
 print("Create build directory")
 try:
-	ret = subprocess.run(["mkdir", BUILD_DIR],
+	ret = subprocess.run(["mkdir", build_dir],
 					  stdout = subprocess.PIPE,
 					  timeout = RUN_TIMEOUT)
 except Exception as e:
