@@ -3,9 +3,9 @@ import os, subprocess
 
 # Settings
 # Directories
-SRC_DIR = "test/src"
+SRC_DIR = "/test/src"
 SRC_FILE = "main.c"
-BUILD_DIR = "test/Build"
+BUILD_DIR = "/test/Build"
 
 # Timeouts
 COMPILE_TIMEOUT = 10.0
