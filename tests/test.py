@@ -3,9 +3,9 @@ import os, subprocess
 
 # Settings
 # Directories
-SRC_DIR = "/test/src"
+SRC_DIR = "../src"
 SRC_FILE = "main.c"
-BUILD_DIR = "/test/Build"
+BUILD_DIR = "../Build"
 
 # Timeouts
 COMPILE_TIMEOUT = 10.0
@@ -16,6 +16,16 @@ src_path = os.path.join(SRC_DIR, SRC_FILE)
 bin_path = os.path.join(BUILD_DIR, "bin")
 
 # Compile the project
+print("Create build directory")
+try:
+	ret = subprocess.run(["mkdir", BUILD_DIR],
+					  stdout = subprocess.PIPE,
+					  stderr = subprocess.PIPE,
+					  timeout = COMPILE_TIMEOUT)
+except Exception as e:
+	print("ERROR: Compilation failed.", str(e))
+	exit(1)
+
 print("Building...")
 try:
 	ret = subprocess.run(["gcc", src_path, "-o", bin_path],
