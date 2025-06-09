@@ -22,7 +22,7 @@ jobs:
 
             # Install the necessary packages
           - name: Install prerequirements
-            run: apt-get install -y python3 build-essential
+            run: apt install -y python3 build-essential
 
             # Run "Print working directory" command
           - run: pwd
