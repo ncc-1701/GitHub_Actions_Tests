@@ -20,11 +20,14 @@ print("Create build directory")
 try:
 	ret = subprocess.run(["mkdir", BUILD_DIR],
 					  stdout = subprocess.PIPE,
-					  stderr = subprocess.PIPE,
-					  timeout = COMPILE_TIMEOUT)
+					  timeout = RUN_TIMEOUT)
 except Exception as e:
-	print("ERROR: Compilation failed.", str(e))
+	print("ERROR: Could not crate the build directory.", str(e))
 	exit(1)
+
+# Parse output
+output = ret.stdout.decode('utf-8')
+print(output)
 
 print("Building...")
 try:
