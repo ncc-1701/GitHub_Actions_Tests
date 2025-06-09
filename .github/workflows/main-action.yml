@@ -8,6 +8,24 @@ jobs:
     notif-start:
         runs-on: ubuntu-22.04
         steps:
-          - run: echo "Start tests."
+        - name: Print the current stage
+          run: echo "Start tests."
 
+    # Next build the project and test the binary
+    needs: [notif-start]
+        runs-on: ubuntu-22.04
+        steps:
+            # Checkout the repo
+          - name: Check out the repo
+            uses: actions/checkout@v3
+
+            # Install the necessary packages
+          - name: Install prerequirements
+            run: apt-get install -y python3 build-essential
+
+            # Run "Print working directory" command
+          - run: pwd
           
+            # Run test
+          - name: Run test
+            run: python3 tests/test.py
