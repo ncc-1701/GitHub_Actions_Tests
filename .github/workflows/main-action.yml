@@ -12,7 +12,8 @@ jobs:
           run: echo "Start tests."
 
     # Next build the project and test the binary
-    needs: [notif-start]
+    build-and-test:
+        needs: [notif-start]
         runs-on: ubuntu-22.04
         steps:
             # Checkout the repo
